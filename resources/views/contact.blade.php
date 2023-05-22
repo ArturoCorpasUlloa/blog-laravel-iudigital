@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-        <h2>Bienvenidos a Laravel 10</h2>
+    <h1>Bienvenido a Vista Contac</h1>
 </body>
 </html>
