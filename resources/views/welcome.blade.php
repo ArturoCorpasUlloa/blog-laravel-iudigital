@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
-        <h2>Bienvenidos a Laravel 10</h2>
+<body style="background: aquamarine" >
+        <h2>Bienvenidos a Laravel 10 😎</h2>
 </body>
 </html>
