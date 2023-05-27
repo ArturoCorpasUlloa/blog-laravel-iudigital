@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,30 +38,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-Route::get('/message', function () {
-    return "<h2>🖐Hello, I'm using the laravel framework versión 10</h2>";
-});
-
-/* Ruta con parametro no opcional */
-Route::get('/message/{name}', function ($name) {
-    return "<h2>🖐Hello, I'm $name</h2>";
-});
-
-/* Ruta con parametro opcional */
-Route::get('/message-v2/guest/{name?}', function ($name = "Visitante no identificado 🛸") {
-    return "<h2>🖐Hello, I'm $name</h2>";
-});
 
 require __DIR__ . '/auth.php';
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::resource('/categories',CategoriesController::class);
+
+Route::get('/', function(){
+    return view('Welcome');
+});
