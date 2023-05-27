@@ -1,18 +1,28 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
-        //
+        $post = Post::paginate(5);
+
+       /* if(!Gate::allows('index', $post[0])){
+            abort(403);
+        }*/
+        return view('dashboard.posts.index', compact('post'));
+
     }
 
     /**
@@ -20,7 +30,12 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::pluck('id');
+        $post = new Post();
+        /* if(!Gate::allows('create', $post)){
+            abort(403);
+        }*/
+        return view('dashboard.posts.create', compact('categories','post'));
     }
 
     /**

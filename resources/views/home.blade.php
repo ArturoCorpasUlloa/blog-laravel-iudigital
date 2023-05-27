@@ -22,7 +22,7 @@
                             <p class="card-text">Crear publiciones.</p>
                             <a href="#" class="btn btn-primary">Ir al módulo</a>
                             </div>
-                        </div>
+                    </div>
 
                         <div class="card" style="width: 18rem;">
                             <img class="card-img-top" src="..." alt="Card image cap">
@@ -30,7 +30,7 @@
                             <h5 class="card-title">Módulo de categorías</h5>
                             <p class="card-text">Crear publiciones.</p>
                             <a href="#" class="btn btn-primary">Ir al módulo</a>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
