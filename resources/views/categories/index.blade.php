@@ -1,43 +1,36 @@
 @extends('layouts.app')
 @section('content')
-     <div class="container">
-        <h3>Listar categorías existentes</h3>
-
-        <div class="table-responsive">
-            <table class="table table-hover ">
-                <thead>
+    <a class="btn btn-success my-3" href="{{ route('categories.create') }}">Crear Categoria</a>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Nombre Categoria</th>
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($categories as $category)
                     <tr>
-                        <th>Columna 1</th>
-                        <th>Columna 2</th>
-                        <th>Columna 3</th>
+                        <td>{{ $category->title }}</td>
+                        <td>{{ $category->description }}</td>
+                        <td>
+                            <a class="btn btn-warning btn-action edit" href="{{ route('categories.edit', $category) }}"
+                                style="display: inline-block; margin-right: 10px;">Editar</a>
+                            <a class="btn btn-primary" href="{{ route('categories.show', $category) }}"
+                                style="display: inline-block; margin-right: 10px">Ver</a>
+                            <form action="{{ route('categories.destroy', $category) }}" method="POST"
+                                style="display: inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" type="submit">Eliminar</button>
+                            </form>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr class="aling-bottom">
-                        <td>Texto 1</td>
-                        <td>Texto 1</td>
-                        <td>Texto 1</td>
-                    </tr>
-                    <tr class="aling-bottom">
-                        <td>Texto 1</td>
-                        <td>Texto 1</td>
-                        <td>Texto 1</td>
-                    </tr>
-                    <tr class="aling-bottom">
-                        <td>Texto 1</td>
-                        <td>Texto 1</td>
-                        <td>Texto 1</td>
-                    </tr>
-                    <tr class="aling-bottom">
-                        <td>Texto 1</td>
-                        <td>Texto 1</td>
-                        <td>Texto 1</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-     </div>
-
+                @endforeach
+            </tbody>
+        </table>
+        {{ $categories->links() }}
+    </div>
 @endsection
-

@@ -23,6 +23,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $slides = [
+            [
+                'title' => 'Ave1',
+                'image' => (asset('images/png/ave1.png'))
+            ],
+            [
+                'title' => 'Ave2',
+                'image' => (asset('images/png/ave2.png'))
+            ],
+            // Agrega más elementos de slide según sea necesario
+        ];
+
+        return view('bienvenido', compact('slides'));
     }
 }
